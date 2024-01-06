@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "user_id": 2,
+        "connection_type": "FIN",
+        "services": ["MT103", "MT202"],
+        "status": "Pending",
+        "date": "2022-10-15",
+        "assigned_account_manager": "admin",
+        "verification_notes": "Verification pending",
+        "description": "Request for SWIFT connection and services"
+      },
+      {
+        "id": 2,
+        "user_id": 3,
+        "connection_type": "InterAct",
+        "services": ["MT101", "MT940"],
+        "status": "Approved",
+        "date": "2022-09-20",
+        "assigned_account_manager": "admin",
+        "verification_notes": "Verified and approved",
+        "description": "Request for InterAct connection and services"
+      },
+      {
+        "id": 3,
+        "user_id": 1,
+        "connection_type": "FileAct",
+        "services": ["FileAct"],
+        "status": "Rejected",
+        "date": "2022-11-05",
+        "assigned_account_manager": "admin",
+        "verification_notes": "Insufficient documentation",
+        "description": "Request for FileAct connection"
+      },
+      {
+        "id": 4,
+        "user_id": 2,
+        "connection_type": "FIN",
+        "services": ["MT202", "MT300"],
+        "status": "Pending",
+        "date": "2022-12-10",
+        "assigned_account_manager": "admin",
+        "verification_notes": "Awaiting additional information",
+        "description": "Request for FIN connection and services"
+      },
+      {
+        "id": 5,
+        "user_id": 1,
+        "connection_type": "FIN",
+        "services": ["MT103", "MT910"],
+        "status": "Approved",
+        "date": "2022-11-25",
+        "assigned_account_manager": "admin",
+        "verification_notes": "Verified and approved",
+        "description": "Request for FIN connection and services"
+      }
+
+]
