@@ -31,10 +31,17 @@ class Request(db.Model):
     verification_notes = db.Column(db.Text, nullable=True)
     description = db.Column(db.Text, nullable=False)
 
+    @staticmethod
+    def add(request):
+
+        db.session.add(request)
+        db.session.commit()
 class Admin(UserMixin, db.Model):
 
     __tablename__ = 'admin'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
-    role_level = db.Column(db.String(40), nullable=False)
-    skills = db.Column(db.String(200), nullable=False)
+    name = db.Column(db.String(120), nullable=True)
+    role_level = db.Column(db.String(40), nullable=True)
+    skills = db.Column(db.String(200), nullable=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)

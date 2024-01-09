@@ -61,13 +61,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link link-dark">
+                    <a href="#users" class="nav-link link-dark">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                         Users
                     </a>
                 </li>
                 <li>
-                    <a href="/requests" class="nav-link link-dark">
+                    <a href="#requests" class="nav-link link-dark">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
                         Requests
                     </a>
@@ -186,7 +186,45 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 offset-lg-3 offset-sm-3 justify-content-center">
+            <br />
+            <div class="col-lg-8 offset-lg-3 offset-sm-3 justify-content-center" id="#requests">
+
+                <div class="card shadow table_section ">
+                    <h2 class="ml-5  justify-content-center ">All Requests</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">User Id</th>
+                                <th scope="col">Services</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Company name</th>
+                                <th scope="col">Company size</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            {% for request in requests %}
+                                <tr>
+                                    <th scope="row">{{request.id}}</th>
+                                    <td>{{request.connection_type}}</td>
+                                    <td>{{request.services}}</td>
+                                    <td>{{request.date}}</td>
+                                    <td>{{request.description}}</td>
+                                    <td>{{request.status}}</td>
+                                    <td>{{request.company_name}}</td>
+                                    <td>{{request.company_size}}</td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="col-lg-8 offset-lg-3 offset-sm-3 justify-content-center" id="#users">
 
                 <div class="card shadow table_section ">
                     <h2 class="ml-5  justify-content-center ">All Users</h2>
@@ -194,8 +232,8 @@
                         <thead>
                             <tr>
                               <th scope="col">#</th>
-                              <th scope="col">First</th>
-                              <th scope="col">Last</th>
+                              <th scope="col">First Name</th>
+                              <th scope="col">Last Name</th>
                               <th scope="col">Email</th>
                               <th scope="col">Phone Number</th>
                               <th scope="col">Company name</th>
@@ -203,34 +241,26 @@
                               
                             </tr>
                         </thead>
-                          <tbody id="tableBody">
-                            <!-- Table rows will be populated here -->
-                        </tbody>
+                        <tbody id="tableBody">
+                            {% for user in users %}
+                                <tr>
+                                    <th scope="row">{{user.id}}</th>
+                                    <td>{{user.first_name}}</td>
+                                    <td>{{user.last_name}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.phone_number}}</td>
+                                    <td>{{request.status}}</td>
+                                    <td>{{user.company_name}}</td>
+                                    <td>{{user.company_size}}</td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
                     </table>
                 </div>
             </div>
         </div>
         </main>
 
-        <script>
-            fetch('/static/data.json')
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(item => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <th scope="row">${item.id}</th>
-                            <td>${item.name.first_name}</td>
-                            <td>${item.name.last_name}</td>
-                            <td>${item.email}</td>
-                            <td>${item.phone_number}</td>
-                            <td>${item.company_name}</td>
-                            <td>${item.company_size}</td>
-                        `;
-                        document.getElementById('tableBody').appendChild(row);
-                    });
-                });
-        </script>
         
         <script src="/static/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

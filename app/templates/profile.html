@@ -11,7 +11,8 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container mt-10">
+        <div></div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card mb-4">
@@ -59,59 +60,86 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Requests</h5>
-                    </div>
-
-
-                    <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Project 1</li>
-
-                            <li class="list-group-item">Project 2</li>
-
-                            <li class="list-group-item">Project 3</li>
-
-                        </ul>
-                    </div>
-                </div>
+                
                 <!-- Modal -->
-                <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create Requests</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="{{ url_for('main.create_request') }}" method="POST">
-                            <div class="modal-body">
-    
-                                <div class="form-floating">
-                                    <input type="text" name="connection_type" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">Connection Type</label>
-                                </div>
-                                <br/>
-                                <div class="form-floating">
-                                    <input type="text" name="services" class="form-control" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword">services</label>
-                                </div>
-                                <br/>
-                                <div class="form-floating">
-                                    <input type="text" name="description" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">description</label>
-                                </div>
-                                <br/>
-                                
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
-                            </div>
-                    </form>
-                    </div>
-                    </div>
+            </div>
+        </div>
+        <br/>
+        <div class="card">
+            <div class="card-header">
+                <h5>Requests</h5>
+            </div>
+
+           
+            <div class="card-body">
+                <br/>
+                <div class="card  table_section ">
+                    <h2 class="ml-5  justify-content-center "></h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">User Id</th>
+                              <th scope="col">Services</th>
+                              <th scope="col">Date</th>
+                              <th scope="col">Description</th>
+                              <th scope="col">Status</th>
+                              <th scope="col">Company name</th>
+                              <th scope="col">Company size</th>
+                              
+                            </tr>
+                          </thead>
+                          <tbody id="tableBody">
+                            {% for request in requests %}
+                                <tr>
+                                    <th scope="row">{{request.id}}</th>
+                                    <td>{{request.connection_type}}</td>
+                                    <td>{{request.services}}</td>
+                                    <td>{{request.date}}</td>
+                                    <td>{{request.description}}</td>
+                                    <td>{{request.status}}</td>
+                                    <td>{{request.company_name}}</td>
+                                    <td>{{request.company_size}}</td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                    </table>
                 </div>
+            </div>
+        </div>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Requests</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ url_for('main.create_request') }}" method="POST">
+                    <div class="modal-body">
+
+                        <div class="form-floating">
+                            <input type="text" name="connection_type" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Connection Type</label>
+                        </div>
+                        <br/>
+                        <div class="form-floating">
+                            <input type="text" name="services" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">services</label>
+                        </div>
+                        <br/>
+                        <div class="form-floating">
+                            <input type="text" name="description" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">description</label>
+                        </div>
+                        <br/>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+            </form>
+            </div>
             </div>
         </div>
 
@@ -122,6 +150,7 @@
         function logout() {
             window.location.href = "{{ url_for('main.logout') }}";
         }
+        console.log(requests);
     </script>
 </body>
 
